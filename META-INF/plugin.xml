@@ -25,7 +25,7 @@
     -->
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <fileTypeFactory implementation="com.thoughtworks.pli.pub_editor.PubFileTypeFactory"/>
     </extensions>
 
     <application-components>

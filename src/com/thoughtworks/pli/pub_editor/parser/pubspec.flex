@@ -12,20 +12,12 @@ import scala.Some;
 %type IElementType
 %function advance
 //%debug
-%{
-private String matchedText() {
-    return yytext().toString();
-}
-private Some<String> someText() {
-    return new Some<String>(yytext().toString());
-}
-%}
 
 Comment = "#" .*
-NewLine = \r\n | \r | \n
+LineSeparator = \r\n | \r | \n
 
 %%
 
-{Comment} { return PubTokenTypes.comment(matchedText()); }
-{NewLine} { return PubTokenTypes.newLine(); }
-.         { return PubTokenTypes.badCharacter(matchedText()); }
+{Comment}          { return PubTokenTypes.Comment(); }
+{LineSeparator}    { return PubTokenTypes.LineSeparator(); }
+.                  { return PubTokenTypes.BadCharacter(); }

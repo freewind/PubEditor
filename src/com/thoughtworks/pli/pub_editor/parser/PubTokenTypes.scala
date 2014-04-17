@@ -7,11 +7,11 @@ class PubTokenTypes
 
 object PubTokenTypes {
 
-  def badCharacter(value: String) = new PubElementType("BadCharacter", Some(value))
+  val BadCharacter = new PubElementType("BadCharacter")
 
-  def comment(value: String) = new PubElementType("Comment", Some(value))
+  val Comment = new PubElementType("Comment")
 
-  def newLine = new PubElementType("NewLine")
+  val LineSeparator = new PubElementType("LineSeparator")
 
 }
 

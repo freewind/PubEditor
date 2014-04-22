@@ -26,6 +26,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="com.thoughtworks.pli.pub_editor.PubFileTypeFactory"/>
+        <lang.syntaxHighlighterFactory
+                key="pub" implementationClass="com.thoughtworks.pli.pub_editor.highlight.PubHighlighterFactory"/>
     </extensions>
 
     <application-components>

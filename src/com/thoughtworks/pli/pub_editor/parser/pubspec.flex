@@ -20,15 +20,15 @@ public List<Integer> allIndentations() { return indentationStack.all(); }
 
 Comment = "#" .*
 LineSeparator = \r\n | \r | \n
+Indentation = {WhiteSpace}+
 WhiteSpace = [\ ]
 NonWhiteSpace = [^\ ]
 BlankChar = [\ \t\f]
 NonBlankChar = [^\ \r\n\t\f]
+ParentKey = {NonBlankChar}+ ":" {BlankChar}* {LineSeparator}
 InlineKey = {NonBlankChar}+ ":" {BlankChar}+
-ChildrenKey = {NonBlankChar}+ ":" {BlankChar}* {LineSeparator}
-MultiLineStringKey = {NonBlankChar}+ ":" {BlankChar}* ">" {LineSeparator}
-Indentation = {WhiteSpace}+
 InlineValue = .+
+MultiLineStringKey = {NonBlankChar}+ ":" {BlankChar}* ">" {LineSeparator}
 
 %state $newLine
 %state $value
@@ -41,7 +41,7 @@ InlineValue = .+
 <YYINITIAL> {
     {Indentation}    { indentationStack.push(yytext().length()); return PubTokenTypes.Indentation(); }
     {Comment}        { return PubTokenTypes.Comment(); }
-    {ChildrenKey}    { yybegin(YYINITIAL);return PubTokenTypes.ChildrenKey(); }
+    {ParentKey}    { yybegin(YYINITIAL);return PubTokenTypes.ParentKey(); }
     {InlineKey}      { yybegin($inlineValue); return PubTokenTypes.InlineKey(); }
     {MultiLineStringKey} { yybegin($multiLineString); return PubTokenTypes.MultiLineStringKey(); }
     {LineSeparator}  { return PubTokenTypes.LineSeparator(); }

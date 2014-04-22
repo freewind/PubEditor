@@ -15,7 +15,7 @@ object PubTokenTypes {
 
   val InlineKey = new PubElementType("InlineKey")
 
-  val ChildrenKey = new PubElementType("ChildrenKey")
+  val ParentKey = new PubElementType("ParentKey")
 
   val InlineValue = new PubElementType("InlineValue")
 
@@ -24,6 +24,8 @@ object PubTokenTypes {
   val OneLineOfMultiLineString = new PubElementType("OneLineOfMultiLineString")
 
   val Indentation = new PubElementType("Indentation")
+
+  val KnownKey = new PubElementType("KnownKey")
 }
 
 class PubElementType[T](elementType: String, value: Option[T] = None) extends IElementType(elementType, PubLanguage) {

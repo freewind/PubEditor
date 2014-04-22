@@ -1,11 +1,3 @@
-package com.thoughtworks.pli.pub_editor.parser;
-
-import com.intellij.lexer.FlexAdapter;
-
-import java.io.Reader;
-
-public class PubSpecLexer extends FlexAdapter {
-    public PubSpecLexer() {
-        super(new _PubSpecLexer((Reader) null));
-    }
-}
+// Idea-flex plugin will try to create the `PubSpecLexer.java` file if it doesn't exist
+// So create a dummy one here, and instead, there is a `PubSpecLexer.scala`
+// to implement the real code
